@@ -1,4 +1,4 @@
-// FIND ALL OF THE EVENTS
+// FIND ALL OF THE ADVENTURES
 
 const getAdventures = async (req, res) => {
   const { MongoClient } = require("mongodb");
@@ -18,7 +18,7 @@ const getAdventures = async (req, res) => {
     const db = client.db("Gullivar");
     console.log("connected!");
 
-    // FIND ALL EVENTS IN MONGO
+    // FIND ALL ADVENTURE IN MONGO
     const result = await db.collection("users").findOne({ email: userEmail });
     console.log(result);
 

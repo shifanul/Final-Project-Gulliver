@@ -11,7 +11,7 @@ const Map = () => {
       <GoogleMap
         zoom={15}
         center={{ lat: 45.54274810082991, lng: -73.60613662655523 }}
-        mapContainerStyle={{ width: "1650px", height: "500px" }}
+        mapContainerStyle={{ width: "1900px", height: "500px" }}
       >
         <MarkerF
           position={{ lat: 45.54274810082991, lng: -73.60613662655523 }}

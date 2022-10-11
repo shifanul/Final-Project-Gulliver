@@ -8,6 +8,7 @@ import Map from "./Map";
 const HomePage = () => {
   const [events, setEvents] = useState(null);
   const [loading, setLoading] = useState(true);
+  let userEmail = sessionStorage.getItem("user");
 
   useEffect(() => {
     fetch(`/api/get-events`)
@@ -47,12 +48,21 @@ const HomePage = () => {
           events.map((event) => {
             return (
               <Wrapper>
-                <Link to={`/adventure/${event._id}`}>
-                  <Div1>{event.name} </Div1>
-                  <Div2 src={event.imgSrc}></Div2>
-                  <Div3>{event.time}</Div3>
-                  <Div4>{event.date}</Div4>
-                </Link>
+                {!userEmail ? (
+                  <div>
+                    <Div1>{event.name} </Div1>
+                    <Div2 src={event.imgSrc}></Div2>
+                    <Div3>{event.time}</Div3>
+                    <Div4>{event.date}</Div4>
+                  </div>
+                ) : (
+                  <Link to={`/adventure/${event._id}`}>
+                    <Div1>{event.name} </Div1>
+                    <Div2 src={event.imgSrc}></Div2>
+                    <Div3>{event.time}</Div3>
+                    <Div4>{event.date}</Div4>
+                  </Link>
+                )}
               </Wrapper>
             );
           })}

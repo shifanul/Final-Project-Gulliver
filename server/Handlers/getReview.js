@@ -1,3 +1,5 @@
+//GET ALL THE REVIEWS
+
 const getReview = async (req, res) => {
   const { MongoClient } = require("mongodb");
   require("dotenv").config();

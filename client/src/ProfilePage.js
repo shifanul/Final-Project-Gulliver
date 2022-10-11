@@ -1,5 +1,5 @@
 //PROFILE PAGE ---- PROFILE INFORMATION!
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { CurrentUserContext } from "./CurrentUserContext";
 import styled from "styled-components";
 import { FiCalendar } from "react-icons/fi";
@@ -9,15 +9,6 @@ import moment from "moment";
 
 const ProfilePage = () => {
   const { currentUser } = useContext(CurrentUserContext);
-  const [joke, setJoke] = useState();
-
-  useEffect(() => {
-    fetch(`https://icanhazdadjoke.com/`)
-      .then((res) => res.json())
-      .then((data) => {
-        setJoke(data);
-      });
-  }, []);
 
   return (
     <>

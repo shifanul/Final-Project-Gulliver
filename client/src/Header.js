@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Logo from "../src/img/Logo.png";
 import LoginButton from "./Login";
-import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = () => {
+  let userEmail = sessionStorage.getItem("user");
+
   return (
     <Wrapper>
       <LogoLink to={"/"}>
@@ -14,8 +15,12 @@ const Header = () => {
       <Title to={"/"}>Gullivar</Title>
       <Wrapper2>
         <Home to={"/"}>Home</Home>
-        <Profile to={"/profile"}>Profile</Profile>
-        <Adventure to={"/Create"}>CreateAdventures!</Adventure>
+        {userEmail && (
+          <>
+            <Profile to={"/profile"}>Profile</Profile>
+            <Adventure to={"/Create"}>CreateAdventures!</Adventure>
+          </>
+        )}
       </Wrapper2>
       <LoginButton />
     </Wrapper>

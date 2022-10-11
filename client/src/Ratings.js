@@ -2,8 +2,6 @@ import styled from "styled-components";
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-// import FetchedRev from "./FetchedRev";
-// import Loader from "./Loader";
 
 const Reviews = () => {
   const { user, loginWithRedirect } = useAuth0();
@@ -59,13 +57,13 @@ const Reviews = () => {
   return loading ? (
     <Wrapper>
       <Div>
-        <P>Rate:</P>
-        <LabelDiv>
+        <Rate>Rate:</Rate>
+        <Section>
           {[...Array(5)].map((star, i) => {
             const ratingValue = i + 1;
             return (
               <>
-                <Label>
+                <SubTitle>
                   <Input
                     type="radio"
                     name="rating"
@@ -82,12 +80,12 @@ const Reviews = () => {
                     onMouseEnter={() => setHover(ratingValue)}
                     onMouseLeave={() => setHover(null)}
                   />
-                </Label>
+                </SubTitle>
               </>
             );
           })}
-        </LabelDiv>
-        <H1>Write a Review</H1>
+        </Section>
+        <Title>Write a Review</Title>
         <textarea
           type="text"
           value={text}
@@ -97,7 +95,7 @@ const Reviews = () => {
         />
         <Button onClick={handleSubmit}>Submit</Button>
 
-        <H1>Reviews</H1>
+        <Title>Reviews</Title>
       </Div>
     </Wrapper>
   ) : (
@@ -123,23 +121,23 @@ const Button = styled.button`
     cursor: pointer;
   }
 `;
-const P = styled.p`
+const Rate = styled.p`
   font-family: poppins;
   font-weight: bold;
 `;
-const H1 = styled.h1`
+const Title = styled.h1`
   border-bottom: 2px solid black;
   width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
 `;
-const LabelDiv = styled.div`
+const Section = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
-const Label = styled.label``;
+const SubTitle = styled.label``;
 const Wrapper = styled.form`
   width: 80%;
   margin-left: 5rem;

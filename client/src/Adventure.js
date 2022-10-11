@@ -18,8 +18,8 @@ const Adventure = () => {
   //LOADING SPINNER
   const [loading, setLoading] = useState(true);
   const [review, setReview] = useState(false);
-  const [remove, setRemove] = useState(true);
 
+  let userEmail = sessionStorage.getItem("user");
   const { user, loginWithRedirect } = useAuth0();
 
   const addToAdventure = () => {
@@ -141,21 +141,23 @@ const Adventure = () => {
               <button onClick={handleRemove}>Joined</button>
             )}
           </Info>
-          <Wrapper2>
-            <StyledReviews />
-            <Wrapper3>
-              {review &&
-                review.map((info) => {
-                  return (
-                    <>
-                      <Name>{info.name}</Name>
-                      <InfoName>{info.review}</InfoName>
-                      <InfoStars>Stars:{info.rating}</InfoStars>
-                    </>
-                  );
-                })}
-            </Wrapper3>
-          </Wrapper2>
+          {userEmail && (
+            <Wrapper2>
+              <StyledReviews />
+              <Wrapper3>
+                {review &&
+                  review.map((info) => {
+                    return (
+                      <>
+                        <Name>{info.name}</Name>
+                        <InfoName>{info.review}</InfoName>
+                        <InfoStars>Stars:{info.rating}</InfoStars>
+                      </>
+                    );
+                  })}
+              </Wrapper3>
+            </Wrapper2>
+          )}
         </Wrapper>
       )}
     </div>

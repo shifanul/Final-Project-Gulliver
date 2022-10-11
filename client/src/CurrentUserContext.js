@@ -17,10 +17,11 @@ export const CurrentUserProvider = ({ children }) => {
         .then((res) => res.json())
         .then((data) => {
           setCurrentUser(data.data);
-        });
+        })
+        .then(sessionStorage.setItem("user", user.email));
     }
   }, [user]);
-  console.log(currentUser);
+
   return (
     <CurrentUserContext.Provider
       value={{ currentUser, adventures, setAdventures, load, setLoad }}

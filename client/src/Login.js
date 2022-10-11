@@ -6,14 +6,15 @@ import styled from "styled-components";
 const LoginButton = () => {
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
+  const handleLogout = () => {
+    sessionStorage.clear();
+    return logout({ returnTo: window.location.origin });
+  };
+
   return (
     <Wrapper>
       <Button
-        onClick={() =>
-          isAuthenticated
-            ? logout({ returnTo: window.location.origin })
-            : loginWithRedirect()
-        }
+        onClick={() => (isAuthenticated ? handleLogout() : loginWithRedirect())}
       >
         {isAuthenticated ? "Log Out" : "Log In"}
       </Button>

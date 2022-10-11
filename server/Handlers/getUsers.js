@@ -18,7 +18,7 @@ const getUsers = async (req, res) => {
 
     const Email = req.params.email;
 
-    // FIND ALL EVENTS IN MONGO
+    // FINDING USER DATA IN MONGO
     const result = await db.collection("users").findOne({ email: Email });
 
     result

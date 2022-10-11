@@ -1,3 +1,5 @@
+//POST REVIEWS TO MONGO COLLECTION
+
 const postReview = async (req, res) => {
   const { MongoClient } = require("mongodb");
   require("dotenv").config();

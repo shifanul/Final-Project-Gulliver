@@ -36,7 +36,6 @@ const Create = () => {
       .then((res) => console.log(res));
   };
 
-  console.log(handleClick);
 
   return (
     <Wrapper>
